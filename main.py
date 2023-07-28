@@ -60,9 +60,10 @@ def showall():
 
 
 def helper():
+    res = "Available bot commands:\n"
     for key in COMMANDS.keys():
         res += f"{key}\n"
-    return "Available bot commands:\n"
+    return res
 
 
 def command_parse(input):
@@ -99,7 +100,8 @@ def main():
     print('How may I help you?')
     while bot_working:
         user_input = input()
-        print(get_handler(command_parse(user_input)[0])(*command_parse(user_input)[1]))
+        command, data = command_parse(user_input)
+        print(get_handler(command)(*data))
 
 
 if __name__ == '__main__':
